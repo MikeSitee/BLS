@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logistics and Services Support - BLS</title>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  color: #202c3c;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 50px;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0));
+}
+
+header > div {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.logo {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.logo .b {
+  color: #ccc;
+}
+
+.logo .ls {
+  color: #00bfff;
+}
+
+.subtitulo {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: white;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+}
+
+.menu-dropdown {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.menu-dropdown > a::after {
+  content: "";
+  display: inline-block;
+  margin-left: 6px;
+  border: solid white;
+  border-width: 0 1.5px 1.5px 0;
+  padding: 3px;
+  transform: rotate(45deg);
+}
+
+.conteudo-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  margin-top: 5px;
+  left: 0;
+  width: 300px;
+  background: #0fa3c7;
+  flex-direction: column;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.conteudo-dropdown a {
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  display: block;
+}
+
+.conteudo-dropdown a:hover {
+  background: #0a6aa1;
+}
+
+.conteudo-dropdown.show {
+  display: flex;
+}
+
+.hero {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background:
+  linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+  url("Pictures/log1.png") center/cover no-repeat;
+
+  color: white;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 42px;
+  max-width: 800px;
+}
+
+.secao {
+  padding: 60px 10%;
+}
+
+.flexivel {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.flexivel img {
+  width: 350px;
+  border-radius: 8px;
+}
+
+h2 {
+  color: #0a6aa1;
+}
+
+.imagens-pequenas {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.imagens-pequenas img {
+  width: 32%;
+  border-radius: 6px;
+}
+
+.imagem-grande {
+  width: 50%;
+  border-radius: 8px;
+}
+
+.cards-abordagem {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.card-abordagem {
+  background: white;
+  width: 32%;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  min-height: 220px;
+}
+
+.card-abordagem h3 {
+  margin-top: 0;
+  color: #0a1f44;
+}
+
+.cta {
+  position: relative;
+  background: url("pictures/Display.PNG") center/cover no-repeat;
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+.conteudo-cta {
+  position: relative;
+  max-width: 600px;
+  margin: auto;
+}
+
+.cta h2 {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.cta p {
+  font-size: 22px;
+  color: #00aaff;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.cta a {
+  display: inline-block;
+  background: #00aaff;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@media(max-width: 900px) {
+
+  .flexivel {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .imagens-pequenas {
+    flex-direction: column;
+  }
+
+  .imagens-pequenas img {
+    width: 100%;
+  }
+
+  .imagem-grande {
+    width: 100%;
+  }
+
+  .cards-abordagem {
+    flex-direction: column;
+  }
+
+  .card-abordagem {
+    width: 100%;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+}
+
+.rodape {
+  position: relative;
+  background:
+    linear-gradient(rgba(0,123,191,0.85), rgba(113, 195, 239, 0.85)),
+    url("Pictures/Display.png") center/cover no-repeat;
+  padding: 70px 10%;
+  color: white;
+}
+
+.container-rodape {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.logo-rodape img {
+  .logo-rodape .logo .b {
+  color: #ccc;
+}
+
+.logo-rodape .logo .ls {
+  color: #00bfff;
+}
+
+.logo-rodape .subtitulo {
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+}
+
+.coluna-rodape {
+  min-width: 220px;
+}
+
+.coluna-rodape h3 {
+  color: #222;
+  margin-bottom: 15px;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.coluna-rodape p {
+  margin-bottom: 18px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.coluna-rodape a {
+  color: white;
+  text-decoration: none;
+}
+
+.icones-sociais {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.icones-sociais a {
+  width: 38px;
+  height: 38px;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.icones-sociais a:hover {
+  background: #0a6aa1;
+}
+
+@media(max-width: 900px) {
+  .container-rodape {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .icones-sociais {
+    justify-content: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+  <div class="logo">
+    <span class="b">B</span><span class="ls">LS</span>
+  </div>
+  <div class="subtitulo">BUNKER LOGISTICS & SERVICES SA</div>
+</div>
+
+<nav>
+
+  <a href="index.html">Home</a>
+
+  <div class="menu-dropdown">
+
+    <a href="">Services</a>
+
+    <div class="conteudo-dropdown">
+
+      <a href="fleet.html">Fleet Management Consultancy</a>
+
+      <a href="heavy-equipment.html">
+        Heavy Equipment and Machinery Rental
+      </a>
+
+      <a href="Human Resources Management.html">
+        Human Resources Management
+      </a>
+
+      <a href="car-rental.html">
+        Car Rental
+      </a>
+
+      <a href="construction.html">
+        Construction Materials Supply
+      </a>
+
+      <a href="logistics.html">
+        Logistics and Services Support
+      </a>
+
+      <a href="Mechanical-Electrical-Plumbing Services.html">
+        Mechanical, Electrical, and Plumbing Services
+      </a>
+
+      <a href="Cleaning and Maintenance of Railway Lines.html">
+        Cleaning and Maintenance of Railway Lines
+      </a>
+
+      <a href="customs.html">
+        Customs Clearance Services
+      </a>
+
+    </div>
+
+  </div>
+
+  <a href="About Us.html">About us</a>
+
+  <a href="contact.html">Contact</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+  <h1>Logistics and Services Support</h1>
+</section>
+
+<div class="secao flexivel">
+
+  <img src="Pictures/log1.png">
+
+  <div>
+
+    <p>
+      Bunker Logistics & Services SA provides comprehensive support
+      in logistics and services, addressing various needs such as transportation,
+      warehousing, and other logistical requirements
+      to streamline business operations.
+    </p>
+
+    <p>
+      Bunker Logistics & Services SA is a leading provider
+      of comprehensive logistics and services solutions in Mozambique.
+      With a commitment to excellence and customer satisfaction,
+      we specialize in addressing various logistical needs,
+      including transportation, warehousing,
+      and other operational requirements,
+      to streamline business operations
+      and drive success for our clients.
+    </p>
+
+  </div>
+
+</div>
+
+<div class="secao">
+
+  <h2>Our Services</h2>
+
+  <p>
+    <strong>Transportation Solutions:</strong>
+    Our transportation services are designed
+    to meet the diverse needs of businesses across industries.
+    Whether our clients require land, sea, or air transportation,
+    we offer reliable and efficient solutions
+    to ensure the timely and safe delivery
+    of goods and materials.
+    With a fleet of well-maintained vehicles
+    and a network of trusted partners,
+    we provide flexible transportation options
+    tailored to our clients’ specific requirements.
+  </p>
+
+  <div class="imagens-pequenas">
+
+    <img src="Pictures/log2.png">
+    <img src="Pictures/log3.png">
+    <img src="Pictures/log4.png">
+
+  </div>
+
+</div>
+
+<div class="secao">
+
+  <p>
+    <strong>Warehousing Facilities:</strong>
+    We understand the importance
+    of efficient storage and inventory management
+    in business operations.
+    That’s why we offer state-of-the-art warehousing facilities
+    equipped with advanced technology and security measures
+    to safeguard our clients’ goods and materials.
+    Our warehousing services include inventory management,
+    order fulfillment, and distribution,
+    allowing our clients to streamline their supply chain processes
+    and optimize their operational efficiency.
+  </p>
+
+</div>
+
+<div class="secao">
+
+  <p>
+    <strong>Customized Solutions:</strong>
+    At Bunker Logistics & Services SA,
+    we recognize that every business is unique,
+    with its own set of logistical challenges and requirements.
+    That’s why we offer customized solutions tailored
+    to meet the individual needs of each client.
+    Whether our clients are small businesses
+    or multinational corporations,
+    we provide personalized assistance and support
+    to help them achieve their logistical objectives
+    and drive success in their operations.
+  </p>
+
+</div>
+
+<div class="secao flexivel">
+
+  <img src="Pictures/log5.png" class="imagem-grande">
+
+  <div>
+
+    <p>
+      <strong>Streamlined Business Operations:</strong>
+      Our comprehensive support in logistics and services
+      is aimed at helping our clients streamline
+      their business operations and achieve their strategic goals.
+      By outsourcing their logistical needs to us,
+      our clients can focus on their core competencies
+      and key priorities,
+      knowing that their logistical requirements
+      are being handled with professionalism,
+      efficiency, and reliability.
+    </p>
+
+  </div>
+
+</div>
+
+<div class="secao">
+
+  <h2>Our Approach</h2>
+
+  <div class="cards-abordagem">
+
+    <div class="card-abordagem">
+
+      <h3>Needs Assessment</h3>
+
+      <p>
+        We begin by conducting a thorough assessment
+        of our clients’ logistical needs,
+        taking into account factors such as volume,
+        frequency, destination,
+        and timeline requirements.
+      </p>
+
+    </div>
+
+    <div class="card-abordagem">
+
+      <h3>Tailored Solutions</h3>
+
+      <p>
+        Based on our assessment findings,
+        we develop tailored solutions
+        that address our clients’ specific logistical challenges
+        and objectives,
+        ensuring optimal efficiency and cost-effectiveness.
+      </p>
+
+    </div>
+
+    <div class="card-abordagem">
+
+      <h3>Continuous Improvement</h3>
+
+      <p>
+        We believe in continuous improvement and innovation.
+        We regularly evaluate and optimize our logistical processes
+        and services to ensure that we are meeting
+        the evolving needs of our clients
+        and maintaining the highest standards of excellence.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="cta">
+
+  <div class="conteudo-cta">
+
+    <h2>
+      Ready to streamline your business operations
+      with comprehensive logistics and services support?
+    </h2>
+
+    <p>
+      Contact Bunker Logistics & Services SA today
+      to learn more about our solutions
+      and how we can help you achieve
+      your logistical objectives and drive success
+      for your business in Mozambique.
+    </p>
+
+    <a href="contact.html">CONTACT US</a>
+
+  </div>
+
+</div>
+
+<script>
+const dropdown = document.querySelector(".menu-dropdown");
+const dropdownLink = dropdown.querySelector("a");
+const dropdownMenu = dropdown.querySelector(".conteudo-dropdown");
+
+dropdownLink.addEventListener("click", function(e) {
+  e.preventDefault();
+  dropdownMenu.classList.toggle("show");
+});
+
+document.addEventListener("click", function(e) {
+
+  if (!dropdown.contains(e.target)) {
+    dropdownMenu.classList.remove("show");
+  }
+
+});
+
+const serviceLinks = dropdownMenu.querySelectorAll("a");
+
+serviceLinks.forEach(link => {
+
+  link.addEventListener("click", function() {
+    dropdownMenu.classList.remove("show");
+  });
+
+});
+</script>
+
+<footer class="rodape">
+
+  <div class="container-rodape">
+
+    <div class="logo-rodape">
+
+  <div class="logo" style="font-size:60px; font-weight:800;">
+    <span class="b">B</span><span class="ls">LS</span>
+  </div>
+
+  <div class="subtitulo" style="color:white; margin-top:5px;">
+    BUNKER LOGISTICS & SERVICES SA
+  </div>
+
+</div>
+
+    <div class="coluna-rodape">
+
+      <h3> LOCATIONS</h3>
+
+      <p>
+        <strong>Maputo</strong><br>
+        Bairro da Liberdade Matola
+      </p>
+
+      <p>
+        <strong>Nampula</strong><br>
+        Q 26, u/c 1º de Maio casa 42,<br>
+        Muhala Expansão
+      </p>
+
+      <p>
+        <strong>Cabo Delgado</strong><br>
+        Av. Maguiguana Nº 229 Bairro<br>
+        Cimento, Cidade de Pemba
+      </p>
+
+      <p>
+        <strong>Tete</strong><br>
+        Bairro Mpáwe, Estrada Nacional<br>
+        nº 7, Rua do fundo das estradas
+      </p>
+
+    </div>
+
+     <div class="coluna-rodape">
+
+      <h3>CONTACT</h3>
+
+      <p>
+        <a href="tel:+258856415966">
+          +258856415966
+        </a>
+      </p>
+
+      <p>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=BlsMz@gmail.com">
+          BlsMz@gmail.com
+        </a>
+      </p>
+
+      <h3>FOLLOW US</h3>
+
+      <div class="icones-sociais">
+
+        <a href="https://x.com/" target="_blank">
+          X
+        </a>
+
+        <a href="https://linkedin.com/" target="_blank">
+          in
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+</footer>
+</body>
+</html>

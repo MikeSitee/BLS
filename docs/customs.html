@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customs Clearance Services</title>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  color: #202c3c;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 50px;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0));
+}
+
+header > div {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.logo {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.logo .b {
+  color: #ccc;
+}
+
+.logo .ls {
+  color: #00bfff;
+}
+
+.subtitulo-topo {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: white;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+}
+
+.dropdown {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.dropdown > a::after {
+  content: "";
+  display: inline-block;
+  margin-left: 6px;
+  border: solid white;
+  border-width: 0 1.5px 1.5px 0;
+  padding: 3px;
+  transform: rotate(45deg);
+}
+
+.menu-servicos {
+  display: none;
+  position: absolute;
+  top: 100%;
+  margin-top: 5px;
+  left: 0;
+  width: 300px;
+  background: #0fa3c7;
+  flex-direction: column;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.menu-servicos a {
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  display: block;
+}
+
+.menu-servicos a:hover {
+  background: #0a6aa1;
+}
+
+.menu-servicos.show {
+  display: flex;
+}
+
+.banner {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background:
+  linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+  url("Pictures/custom1.png") center/cover no-repeat;
+
+  color: white;
+  padding: 0 20px;
+}
+
+.banner h1 {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 700;
+  max-width: 850px;
+}
+
+.conteudo {
+  width: 85%;
+  margin: auto;
+  padding: 50px 0;
+}
+
+.apresentacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.apresentacao img {
+  width: 250px;
+  border-radius: 6px;
+}
+
+h2 {
+  color: #0a6aa1;
+  margin-top: 40px;
+}
+
+.bloco {
+  margin-top: 30px;
+}
+
+.flex {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.flex img {
+  width: 300px;
+  border-radius: 6px;
+}
+
+.galeria {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.galeria img {
+  width: 18%;
+  border-radius: 4px;
+}
+
+.destaques {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.destaques small {
+  letter-spacing: 4px;
+  color: #888;
+}
+
+.item-destaque {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 800px;
+  margin: 40px auto;
+  text-align: left;
+}
+
+.icone {
+  font-size: 24px;
+}
+
+@media(max-width: 900px){
+
+  .apresentacao,
+  .flex {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .galeria {
+    flex-direction: column;
+  }
+
+  .galeria img {
+    width: 100%;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .banner h1 {
+    font-size: 34px;
+  }
+  
+}
+
+.footer {
+  position: relative;
+  background:
+    linear-gradient(rgba(0,123,191,0.85), rgba(113, 195, 239, 0.85)),
+    url("Pictures/Display.png") center/cover no-repeat;
+  padding: 70px 10%;
+  color: white;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.coluna-rodape {
+  min-width: 220px;
+}
+
+.coluna-rodape h3 {
+  color: #222;
+  margin-bottom: 15px;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.coluna-rodape p {
+  margin-bottom: 18px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.coluna-rodape a {
+  color: white;
+  text-decoration: none;
+}
+
+.icones-sociais {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.icones-sociais a {
+  width: 38px;
+  height: 38px;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.icones-sociais a:hover {
+  background: #0a6aa1;
+}
+
+@media(max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div>
+
+  <div class="logo">
+    <span class="b">B</span><span class="ls">LS</span>
+  </div>
+
+  <div class="subtitulo-topo">
+    BUNKER LOGISTICS & SERVICES SA
+  </div>
+
+</div>
+
+<nav>
+
+  <a href="index.html">Home</a>
+
+  <div class="dropdown">
+
+    <a href="">Services</a>
+
+    <div class="menu-servicos">
+
+      <a href="fleet.html">Fleet Management Consultancy</a>
+
+      <a href="heavy-equipment.html">
+        Heavy Equipment and Machinery Rental
+      </a>
+
+      <a href="Human Resources Management.html">
+        Human Resources Management
+      </a>
+
+      <a href="car-rental.html">
+        Car Rental
+      </a>
+
+      <a href="construction.html">
+        Construction Materials Supply
+      </a>
+
+      <a href="logistics.html">
+        Logistics and Services Support
+      </a>
+
+      <a href="Mechanical-Electrical-Plumbing Services.html">
+        Mechanical, Electrical, and Plumbing Services
+      </a>
+
+      <a href="Cleaning and Maintenance of Railway Lines.html">
+        Cleaning and Maintenance of Railway Lines
+      </a>
+
+      <a href="customs.html">
+        Customs Clearance Services
+      </a>
+
+    </div>
+
+  </div>
+
+  <a href="About Us.html">About us</a>
+
+  <a href="contact.html">Contact</a>
+
+</nav>
+
+</header>
+
+<section class="banner">
+  <h1>Customs Clearance Services</h1>
+</section>
+
+<div class="conteudo">
+
+<div class="apresentacao">
+
+<div>
+
+<p>
+Bunker Logistics & Services SA provides efficient and reliable customs clearance services at all ports of entry in the country, streamlining import and export processes to enhance our clients’ operational efficiency.
+</p>
+
+<p>
+Bunker Logistics & Services SA is a leading provider of efficient and reliable customs clearance services at all ports of entry in Mozambique. With a commitment to excellence and customer satisfaction, we specialize in streamlining import and export processes to enhance our clients’ operational efficiency and facilitate seamless international trade transactions.
+</p>
+
+</div>
+
+<img src="Pictures/custom1.png">
+
+</div>
+
+<h2>Our Services</h2>
+
+<div class="bloco">
+
+<p>
+<strong>Import Clearance:</strong>
+We understand the complexities involved in importing goods into Mozambique. Our experienced team of customs clearance specialists works diligently to ensure the smooth and timely clearance of imported goods through customs procedures. From documentation preparation to customs declaration and duty assessment, we handle all aspects of the import clearance process with efficiency and accuracy.
+</p>
+
+</div>
+
+<div class="bloco flex">
+
+<div>
+
+<p>
+<strong>Export Clearance:</strong>
+Exporting goods requires careful attention to compliance requirements and documentation. Our customs clearance services extend to export shipments, where we assist our clients in navigating export regulations, completing export declarations, and obtaining necessary permits and licenses. With our expertise in export procedures, we help streamline the export clearance process and ensure compliance with international trade regulations.
+</p>
+
+</div>
+
+<img src="Pictures/custom2.png">
+
+</div>
+
+<div class="bloco">
+
+<p>
+<strong>Tariff Classification and Valuation:</strong>
+Determining the correct tariff classification and valuation of goods is essential for accurate customs clearance and duty assessment. Our team provides expert guidance on tariff classification and valuation methodologies, helping our clients minimize customs duties and avoid potential penalties. By ensuring compliance with customs regulations, we help our clients optimize their import and export costs.
+</p>
+
+</div>
+
+<div class="bloco">
+
+<p>
+<strong>Duty Optimization:</strong>
+Customs duties can have a significant impact on the cost of international trade. Our customs clearance services include duty optimization strategies aimed at minimizing duty liabilities and maximizing cost savings for our clients. Through careful planning and utilization of duty relief programs and preferential trade agreements, we help our clients reduce their customs duties and improve their competitiveness in the global marketplace.
+</p>
+
+</div>
+
+<div class="galeria">
+
+<img src="Pictures/custom3.png">
+<img src="Pictures/custom4.png">
+<img src="Pictures/custom5.png">
+<img src="Pictures/Custom6.png">
+<img src="Pictures/custom7.png">
+
+</div>
+
+<div class="destaques">
+
+<small>Costums Clearance Services</small>
+
+<h2>Key Features of Our Services:</h2>
+
+<div class="item-destaque">
+
+<div class="icone"></div>
+
+<div>
+
+<h3>Proactive Communication</h3>
+
+<p>
+We believe in maintaining open and transparent communication with our clients throughout the customs clearance process. Our team provides regular updates and guidance on customs requirements, documentation status, and clearance progress, ensuring that our clients are informed and prepared at every step of the process.
+</p>
+
+</div>
+
+</div>
+
+<div class="item-destaque">
+
+<div class="icone"></div>
+
+<div>
+
+<h3>Compliance Assurance</h3>
+
+<p>
+Compliance with customs regulations is critical for successful international trade transactions. Our customs clearance specialists stay abreast of changes in customs regulations and trade policies, ensuring that our clients’ shipments comply with all applicable laws and regulations. With our commitment to compliance, we help mitigate risks and ensure smooth customs clearance for our clients.
+</p>
+
+</div>
+
+</div>
+
+<div class="item-destaque">
+
+<div class="icone"></div>
+
+<div>
+
+<h3>Efficient Documentation Handling</h3>
+
+<p>
+Documentation plays a vital role in customs clearance. Our team handles all documentation requirements with precision and efficiency, minimizing errors and delays in the clearance process. From commercial invoices and packing lists to certificates of origin and customs declarations, we ensure that all required documents are accurately prepared and submitted in a timely manner.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+const dropdown = document.querySelector(".dropdown");
+const dropdownLink = dropdown.querySelector("a");
+const dropdownMenu = dropdown.querySelector(".menu-servicos");
+
+dropdownLink.addEventListener("click", function(e) {
+  e.preventDefault();
+  dropdownMenu.classList.toggle("show");
+});
+
+document.addEventListener("click", function(e) {
+
+  if (!dropdown.contains(e.target)) {
+    dropdownMenu.classList.remove("show");
+  }
+
+});
+
+const serviceLinks = dropdownMenu.querySelectorAll("a");
+
+serviceLinks.forEach(link => {
+
+  link.addEventListener("click", function() {
+    dropdownMenu.classList.remove("show");
+  });
+
+});
+</script>
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <div class="footer-logo">
+
+      <div class="logo" style="font-size:60px; font-weight:800;">
+        <span class="b">B</span><span class="ls">LS</span>
+      </div>
+
+      <div class="subtitulo-topo" style="color:white; margin-top:5px;">
+        BUNKER LOGISTICS & SERVICES SA
+      </div>
+
+    </div>
+
+    <div class="footer-column">
+
+      <h3> LOCATIONS</h3>
+
+      <p>
+        <strong>Maputo</strong><br>
+        Bairro da Liberdade Matola
+      </p>
+
+      <p>
+        <strong>Nampula</strong><br>
+        Q 26, u/c 1º de Maio casa 42,<br>
+        Muhala Expansão
+      </p>
+
+      <p>
+        <strong>Cabo Delgado</strong><br>
+        Av. Maguiguana Nº 229 Bairro<br>
+        Cimento, Cidade de Pemba
+      </p>
+
+      <p>
+        <strong>Tete</strong><br>
+        Bairro Mpáwe, Estrada Nacional<br>
+        nº 7, Rua do fundo das estradas
+      </p>
+
+    </div>
+
+    <div class="coluna-rodape">
+
+      <h3>CONTACT</h3>
+
+      <p>
+        <a href="tel:+258856415966">
+          +258856415966
+        </a>
+      </p>
+
+      <p>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=BlsMz@gmail.com">
+          BlsMz@gmail.com
+        </a>
+      </p>
+
+      <h3>FOLLOW US</h3>
+
+      <div class="icones-sociais">
+
+        <a href="https://x.com/" target="_blank">
+          X
+        </a>
+
+        <a href="https://linkedin.com/" target="_blank">
+          in
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</footer>
+
+</body>
+</html>
